@@ -13,6 +13,8 @@ A magical documentation tool for GDScript.
 - [Usage](#usage)
 - [Options](#options)
 - [Documentation](#documentation)
+- [Getting started](#getting-started)
+- [Examples](#examples)
 
 ## Prerequisites
 
@@ -40,17 +42,72 @@ gdscriptify [options]
   - Default: `./`.
 - `-o, --ouput [path]`: Directory path to store the documentation.
   - It must be a relative path to `--directory`.
-  - Default: `docs`
+  - Default: `docs`.
 - `-c, --code {true|false}`: Generate a "Code Reference" JSON file to `--output`.
   - Default: `false`.
 - `-m, --markdown {true|false}`: Generate Markdown files to `--output`.
   - Default: `true`.
+- `-r, --readme {true|false}`: Generate a "README" file.
+  - Only works when there's 1 GDScript file.
+  - Default: `true`.     
 - `-v, --version`: Show package version.
 
 ## Documentation
 
 - [How to document GDScript files](docs/how-to-document-gdscript-files.md).
 - [Generate a README file](docs/generate-a-readme-file.md).
+
+## Getting started
+
+First of all, you have to [document the GDScript files](docs/how-to-document-gdscript-files.md).
+
+Once that's done:
+
+- Open a Terminal.
+- Go to your Godot's project folder.
+- Run `gdscriptify`.
+
+```bash
+cd /path/to/your/godot/project
+gdscriptify
+```
+
+Or you can use `-d` to be able to run `gdscriptify` from anywhere and avoid having to go to the specific folder.
+
+```bash
+gdscriptify -d /path/to/your/godot/project
+```
+
+Assuming GDScriptify's default values are being used, a `docs` folder will be created in the root of your Godot's project (where `project.godot` is located) with the documentation files.
+
+```
+project
+├── another_awesome_script.gd
+├── awesome_script.gd
+├── docs
+│   ├── another_awesome_script.md
+│   └── awesome_script.md
+├── icon.png
+└── project.godot
+```
+
+If there's **only 1 GDScript file** in the project, GDScriptify will create a `README.md` file in the root of your Godot's project.
+
+```
+project
+├── awesome_script.gd
+├── icon.png
+├── project.godot
+└── README.md
+```
+
+Check out the documentation on [generating a README file](docs/generate-a-readme-file.md) to learn how to make it look better.
+
+If you don't want that one file to be converted into a README file, run:
+
+```
+gdscriptify -r false
+```
 
 ## Examples
 
