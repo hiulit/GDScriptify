@@ -35,21 +35,20 @@ gdscriptify [options]
 ## Options
 
 - `-h, --help`: Show help menu.
-- `-d, --directory [path]`: Directory path from which to generate the documentation.
+- `-d, --directory path`: Path from which to generate the documentation.
   - It can be an absolute path.
   - It can be a relative path (has to start with `./`).
   - It must contain a `project.godot` file.
   - Default: `./`.
-- `-o, --ouput [path]`: Directory path to store the documentation.
+- `-o, --ouput path`: Path to store the documentation.
   - It must be a relative path to `--directory`.
   - Default: `docs`.
 - `-c, --code {true|false}`: Generate a "Code Reference" JSON file to `--output`.
   - Default: `false`.
 - `-m, --markdown {true|false}`: Generate Markdown files to `--output`.
   - Default: `true`.
-- `-r, --readme {true|false}`: Generate a "README" file.
-  - Only works when there's 1 GDScript file.
-  - Default: `true`.     
+- `-r, --readme false`: Prevent generating a "README" file.
+  - Only has effect when there's 1 GDScript file.
 - `-v, --version`: Show package version.
 
 ## Documentation
@@ -72,7 +71,7 @@ cd /path/to/your/godot/project
 gdscriptify
 ```
 
-Or you can use `-d` to be able to run `gdscriptify` from anywhere and avoid having to go to the specific folder.
+Or, if you don't want to have to go the folder, you can run `gdscriptify` with `-d [path]` from anywhere.
 
 ```bash
 gdscriptify -d /path/to/your/godot/project
