@@ -1,0 +1,25 @@
+{
+  "name": "gdscriptify",
+  "description": "A magical documentation tool for GDScript.",
+  "version": "1.0.0",
+  "main": "src/index.js",
+  "keywords": [
+    "gdscriptify",
+    "magical",
+    "documentation",
+    "tool",
+    "gdscript",
+    "godot",
+    "engine"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hiulit/GDScriptify.git"
+  },
+  "bugs": "https://github.com/hiulit/GDScriptify/issues",
+  "author": "hiulit",
+  "license": "MIT",
+  "bin": {
+    "gdscriptify": "bin/gdscriptify"
+  }
+}
