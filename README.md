@@ -4,7 +4,7 @@
 
 A magical documentation tool for GDScript.
 
-![GDScriptify banner](gdscriptify-banner.jpg)
+![GDScriptify banner](/gdscriptify-banner.jpg)
 
 ## Table of contents
 
@@ -47,18 +47,18 @@ gdscriptify [options]
   - Default: `false`.
 - `-m, --markdown {true|false}`: Generate Markdown files to `--output`.
   - Default: `true`.
-- `-r, --readme false`: Prevent generating a "README" file.
+- `-r, --readme false`: Prevent generating a `README` file.
   - Only has effect when there's 1 GDScript file.
 - `-v, --version`: Show package version.
 
 ## Documentation
 
-- [How to document GDScript files](docs/how-to-document-gdscript-files.md).
-- [Generate a README file](docs/generate-a-readme-file.md).
+- [How to document GDScript files](/docs/how-to-document-gdscript-files.md).
+- [Generate a README file](/docs/generate-a-readme-file.md).
 
 ## Getting started
 
-First of all, you have to [document the GDScript files](docs/how-to-document-gdscript-files.md).
+First of all, you have to [document the GDScript files](/docs/how-to-document-gdscript-files.md).
 
 Once that's done:
 
@@ -100,7 +100,7 @@ project
 └── README.md
 ```
 
-Check out the documentation on [generating a README file](docs/generate-a-readme-file.md) to learn how to make it look better.
+Check out the documentation on [generating a README file](/docs/generate-a-readme-file.md) to learn how to make it look better.
 
 If you don't want that one file to be converted into a README file, run:
 
