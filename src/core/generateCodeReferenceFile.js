@@ -28,9 +28,7 @@ module.exports = () => {
   let files = getAllFiles(config.projectDir)
 
   if (!files.length) {
-    error(`
-ERROR: No GDScript (.gd) files found in "${config.projectDir}"!
-    `)
+    error(`ERROR: No GDScript (.gd) files found in "${config.projectDir}"!`)
   }
 
   if (files.length === 1 && config.readme) {
@@ -78,8 +76,14 @@ ERROR: No GDScript (.gd) files found in "${config.projectDir}"!
       }
 
       codeReference.classes.push(file)
+    }
 
-      if (config.markdown) {
+    if (config.markdown) {
+      if (codeReference.classes.length === 0) {
+        error('ERROR: There are no documented files!')
+      }
+
+      for (let index = 0; index < codeReference.classes.length; index++) {
         generateMarkdownFile(codeReference.classes[index])
       }
     }
