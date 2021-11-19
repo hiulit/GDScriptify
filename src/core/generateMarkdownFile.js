@@ -82,7 +82,7 @@ module.exports = file => {
         outputString += `\`\`\`gdscript\n${item.code}\n\`\`\`\n\n`
         outputString += `${item.description}\n\n`
 
-        if (item.return_type) {
+        if (item.return_type && item.return_type != 'void') {
           outputString += `**Returns**: \`${item.return_type}\`\n\n`
         }
 
