@@ -9,7 +9,7 @@ module.exports = (section, line) => {
     section.name = line.match(regex.function.name).pop()
     section.code = line.slice(0, -1)
 
-    if (line.match(/^static/)) {
+    if (line.match(regex.function.static)) {
       section.static = true
     }
   }

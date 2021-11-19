@@ -24,7 +24,8 @@ const regex = {
         inferredTypeName: /(\w+[\s|\S]):/
       },
       returnType: /->(.*):/
-    }
+    },
+    static: /^static/
   },
   inferredType: /:=([\s|\S]*)/,
   markdown: {
