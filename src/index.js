@@ -71,9 +71,20 @@ Use "${name} help" to see all the options.
     args.shift()
   }
 
-  if (!fs.existsSync(path.join(config.projectDir, config.projectFile))) {
+  if (fs.existsSync(path.join(config.projectDir, config.projectFile))) {
+    config.projectType = 'project'
+  } else if (fs.existsSync(path.join(config.projectDir, config.pluginFile))) {
+    config.projectType = 'plugin'
+  }
+
+  if (!config.projectType) {
     error(`
-ERROR: "${config.projectDir}" doesn't have a "${config.projectFile}" file!
+ERROR: "${config.projectDir}" doesn't have any of the following files:
+
+- "${config.projectFile}"
+- "${config.pluginFile}"
+
+GDScriptify needs at least of one those to work properly.
     `)
   }
 

@@ -1,6 +1,7 @@
 const config = require('../config')
 const error = require('../utils/error')
 const fs = require('fs')
+const generateIndexFile = require('./generateIndexFile')
 const generateLicense = require('./generateLicense')
 const generateMarkdownFile = require('./generateMarkdownFile')
 const getAllFiles = require('./getAllFiles')
@@ -9,7 +10,21 @@ const parseFile = require('./parsers/parseFile')
 const path = require('path')
 
 module.exports = () => {
-  let projectFile = parseFile(path.join(config.projectDir, config.projectFile))
+  let generatedMarkdownFiles = 0
+  let projectTypeFile
+
+  switch (config.projectType) {
+    case 'project':
+      projectTypeFile = config.projectFile
+
+      break
+    case 'plugin':
+      projectTypeFile = config.pluginFile
+
+      break
+  }
+
+  let projectFile = parseFile(path.join(config.projectDir, projectTypeFile))
 
   let codeReference = {
     name: projectFile.name || null,
@@ -28,9 +43,7 @@ module.exports = () => {
   let files = getAllFiles(config.projectDir)
 
   if (!files.length) {
-    error(`
-ERROR: No GDScript (.gd) files found in "${config.projectDir}"!
-    `)
+    error(`ERROR: No GDScript (.gd) files found in "${config.projectDir}"!`)
   }
 
   if (files.length === 1 && config.readme) {
@@ -65,7 +78,6 @@ ERROR: No GDScript (.gd) files found in "${config.projectDir}"!
       let file = parseFile(files[index])
 
       if (Object.values(file.sections).every(section => section.length === 0)) {
-        index += 1
         continue
       }
 
@@ -78,10 +90,35 @@ ERROR: No GDScript (.gd) files found in "${config.projectDir}"!
       }
 
       codeReference.classes.push(file)
+    }
 
-      if (config.markdown) {
-        generateMarkdownFile(codeReference.classes[index])
+    if (config.markdown) {
+      if (codeReference.classes.length === 0) {
+        error('ERROR: There are no documented files!')
       }
+
+      let indexFiles = []
+
+      for (let index = 0; index < codeReference.classes.length; index++) {
+        generateMarkdownFile(codeReference.classes[index])
+        generatedMarkdownFiles++
+
+        indexFiles.push({
+          name: codeReference.classes[index].name,
+          path: codeReference.classes[index].path
+        })
+      }
+
+      generateIndexFile(indexFiles)
+
+      console.log(`
+GDScriptify
+-----------
+
+Markdown files created: ${generatedMarkdownFiles} out of ${files.length}.
+
+The documentation files can be found in '${config.outputDir}'.
+      `)
     }
   }
 

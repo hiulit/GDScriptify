@@ -1,13 +1,13 @@
 const config = {
-  codeReferenceFileName: 'codeReference',
   code: false,
+  codeReferenceFileName: 'codeReference',
   markdown: true,
   outputDir: 'docs',
+  pluginFile: 'plugin.cfg',
   projectDir: process.cwd(),
   projectFile: 'project.godot',
-  readme: true,
-  slice: 0,
-  table: true
+  projectType: '',
+  readme: true
 }
 
 module.exports = config

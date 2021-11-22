@@ -6,6 +6,12 @@ A magical documentation tool for GDScript.
 
 ![GDScriptify banner](/gdscriptify-banner.jpg)
 
+## Introduction
+
+GDScriptify is an API documentation generator tool for GDScript that converts comments you write alongside the code into Markdown documentation files.
+
+It's great for documenting Godot plugins or frameworks. Even for just small one-script projects.
+
 ## Table of contents
 
 - [Prerequisites](#prerequisites)
@@ -49,6 +55,7 @@ gdscriptify [options]
   - Default: `true`.
 - `-r, --readme false`: Prevent generating a `README` file.
   - Only has effect when there's 1 GDScript file.
+  - Default: `true`.
 - `-v, --version`: Show package version.
 
 ## Documentation
@@ -77,7 +84,7 @@ Or, if you don't want to have to go the folder, you can run `gdscriptify` with `
 gdscriptify -d /path/to/your/godot/project
 ```
 
-Assuming GDScriptify's default values are being used, a `docs` folder will be created in the root of your Godot's project (where `project.godot` is located) with the documentation files.
+Assuming GDScriptify's default values are being used, a `docs` folder will be created in the root of your Godot's project (where `project.godot` or `plugin.cfg` is located) with the documentation files.
 
 ```
 project
