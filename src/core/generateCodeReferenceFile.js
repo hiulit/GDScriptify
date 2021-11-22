@@ -9,7 +9,18 @@ const parseFile = require('./parsers/parseFile')
 const path = require('path')
 
 module.exports = () => {
-  let projectFile = parseFile(path.join(config.projectDir, config.projectFile))
+  let projectTypeFile
+
+  switch (config.projectType) {
+    case 'project':
+      projectTypeFile = config.projectFile
+
+      break
+    case 'plugin':
+      projectTypeFile = config.pluginFile
+
+      break
+  }
 
   let codeReference = {
     name: projectFile.name || null,
