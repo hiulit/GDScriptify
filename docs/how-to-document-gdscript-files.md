@@ -1,33 +1,33 @@
 # How to document GDScript files
 
+
 ## Table of contents
 
 - [Docstrings](#docstrings)
-- [Special tokens](#special-tokens)
+- [Tags](#tags)
 
 ## Docstrings
 
-Docstrings are lines starting with a double hash sign (`##`).
+GDScriptify docstrings must be placed right above the code being documented.
 
-You can document variables, functions, etc. using docstrings above their definitions.
-
-```gdscript
-## If `true`, particles are being emitted.
-export (bool) var emitting = false setget _set_emitting
-```
+Each docstring must start with a double hash sign (`##`) in order to be recognized by the GDScriptify parser.
 
 You can use [Markdown](https://daringfireball.net/projects/markdown/syntax) to write docstrings.
 
 ```gdscript
+## If `true`, particles are being emitted.
+export (bool) var emitting = false setget _set_emitting
 ## The type of particles:
 ## - `0 (Square)`.
 ## - `1 (Circle)`.
 export (int, "Square", "Circle") var type = 0
 ```
 
-## Special tokens
+## Tags
 
-There are some special words, that start with `@` and accept an argument between curly braces (`{}`), which perform different tasks:
+Tags always begin with an at sign (`@`) and accept an argument enclosed in curly braces (`{` and `}`).
+
+GDScriptify supports different kinds of tags:
 
 - [@example](#example)
 - [@link_img](#link_img)
@@ -56,4 +56,3 @@ Prints an image. The path must be relative to the file.
 ```
 
 Generates an anchor link to the variable or function's section of the given name.
-

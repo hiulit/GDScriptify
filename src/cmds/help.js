@@ -30,6 +30,7 @@ Usage: ${name} [options]
                                 Default: "true".
 -r, --readme false            Prevent generating a "README" file.
                                 Only has effect when there's 1 GDScript file.
+                                Default: "true".
 -v, --version                 Show package version.
   `
 }
