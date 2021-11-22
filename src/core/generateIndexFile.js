@@ -1,6 +1,5 @@
 const config = require('../config')
 const fs = require('fs')
-const getAllFiles = require('./getAllFiles')
 const path = require('path')
 
 module.exports = files => {
@@ -13,6 +12,11 @@ module.exports = files => {
 
     outputString += `- [${fileName}](./${filePath})\n`
   }
+
+  outputString += '\n'
+
+  outputString +=
+    '---\n\nPowered by [GDScriptify](https://github.com/hiulit/GDScriptify).\n'
 
   let outputFilePath = path.join(config.outputDir, 'index.md')
 
