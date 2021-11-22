@@ -9,6 +9,7 @@ const parseFile = require('./parsers/parseFile')
 const path = require('path')
 
 module.exports = () => {
+  let generatedMarkdownFiles = 0
   let projectTypeFile
 
   switch (config.projectType) {
@@ -96,7 +97,17 @@ module.exports = () => {
 
       for (let index = 0; index < codeReference.classes.length; index++) {
         generateMarkdownFile(codeReference.classes[index])
+        generatedMarkdownFiles++
       }
+
+      console.log(`
+GDScriptify
+-----------
+
+Markdown files created: ${generatedMarkdownFiles} out of ${files.length}.
+
+The documentation files can be found in '${config.outputDir}'.
+      `)
     }
   }
 
