@@ -40,6 +40,26 @@ module.exports = file => {
     outputString += `**Extends**: \`${file.extends}\`\n\n`
   }
 
+  if (file.icon) {
+    file.icon = file.icon.replace('res://', '')
+
+    let iconPath = path.dirname(file.icon).split(path.sep)
+    let iconBaseName = path.basename(file.icon)
+    let iconPathArray = []
+
+    for (let index = 0; index < iconPath.length; index++) {
+      const element = iconPath[index]
+      if (!config.projectDir.split(path.sep).includes(element)) {
+        iconPathArray.push(element)
+      }
+    }
+    console.log(path.join(iconPathArray.join(path.sep), iconBaseName))
+    outputString += `**Icon**: ![icon](/${path.join(
+      iconPathArray.join(path.sep),
+      iconBaseName
+    )})\n\n`
+  }
+
   if (!Object.values(file.sections).every(section => section.length === 0)) {
     outputString += `## Table of contents\n\n`
 
