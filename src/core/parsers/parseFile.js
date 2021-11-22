@@ -152,7 +152,6 @@ module.exports = filePath => {
       }
 
       break
-
     case '.gd':
       file = {
         name: null,
@@ -235,6 +234,11 @@ module.exports = filePath => {
 
             if (section.example) {
               section.description = section.description.trim()
+            }
+
+            if (!lines[index + i]) {
+              index += i
+              continue
             }
 
             if (lines[index + i].split(' ')[0] === '#') {

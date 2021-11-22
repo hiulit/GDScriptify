@@ -23,6 +23,8 @@ module.exports = () => {
       break
   }
 
+  let projectFile = parseFile(path.join(config.projectDir, projectTypeFile))
+
   let codeReference = {
     name: projectFile.name || null,
     description: projectFile.description || null,
@@ -75,7 +77,6 @@ module.exports = () => {
       let file = parseFile(files[index])
 
       if (Object.values(file.sections).every(section => section.length === 0)) {
-        index += 1
         continue
       }
 
