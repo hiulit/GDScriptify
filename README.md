@@ -117,7 +117,7 @@ gdscriptify -r false
 
 ## Examples
 
-- [Godot 3 2D Day/Night Cycle](https://github.com/hiulit/Godot-3-2D-Day-Night-Cycle/tree/master/docs/src) - Documentation.
+- [Godot 3 2D Day/Night Cycle](https://github.com/hiulit/Godot-3-2D-Day-Night-Cycle/tree/master/docs) - Documentation.
 - [Godot 3 2D Draw Sprite](https://github.com/hiulit/Godot-3-2D-Draw-Sprite) - README.
 - [Godot 3 2D Fake Confetti Particles](https://github.com/hiulit/Godot-3-2D-Fake-Confetti-Particles) - README.
 - [Godot 3 2D Fake Snow Particles](https://github.com/hiulit/Godot-3-2D-Fake-Snow-Particles) - README.
