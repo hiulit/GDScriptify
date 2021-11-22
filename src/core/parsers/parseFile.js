@@ -15,6 +15,43 @@ module.exports = filePath => {
   let lines = fs.readFileSync(filePath, 'utf8').split(/\r?\n/)
 
   switch (path.extname(filePath)) {
+    case '.cfg':
+      for (let index = 0; index < lines.length; index++) {
+        const line = lines[index]
+
+        if (line.lastIndexOf('name', 0) === 0) {
+          file.name = line.split('"')[1]
+        }
+
+        if (line.lastIndexOf('description', 0) === 0) {
+          if (line.slice(-1) !== '"') {
+            file.description = `${line}\n`
+            let lineIndex = index
+
+            while (lines[lineIndex].slice(-1) !== '"') {
+              lineIndex += 1
+              file.description += `${lines[lineIndex]}\n`
+
+              continue
+            }
+            file.description = file.description.match(
+              /"([^"\\]*(?:\\.[^"\\]*)*)"/
+            )[1]
+          } else {
+            file.description = line.match(/"([^"\\]*(?:\\.[^"\\]*)*)"/)[1]
+          }
+        }
+
+        if (line.lastIndexOf('author', 0) === 0) {
+          file.author = line.split('"')[1]
+        }
+
+        if (line.lastIndexOf('version', 0) === 0) {
+          file.version = line.split('"')[1]
+        }
+      }
+
+      break
     case '.godot':
       for (let index = 0; index < lines.length; index++) {
         const line = lines[index]
