@@ -53,7 +53,7 @@ module.exports = file => {
         iconPathArray.push(element)
       }
     }
-    console.log(path.join(iconPathArray.join(path.sep), iconBaseName))
+
     outputString += `**Icon**: ![icon](/${path.join(
       iconPathArray.join(path.sep),
       iconBaseName
