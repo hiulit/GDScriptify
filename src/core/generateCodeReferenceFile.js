@@ -1,6 +1,7 @@
 const config = require('../config')
 const error = require('../utils/error')
 const fs = require('fs')
+const generateIndexFile = require('./generateIndexFile')
 const generateLicense = require('./generateLicense')
 const generateMarkdownFile = require('./generateMarkdownFile')
 const getAllFiles = require('./getAllFiles')
@@ -96,10 +97,19 @@ module.exports = () => {
         error('ERROR: There are no documented files!')
       }
 
+      let indexFiles = []
+
       for (let index = 0; index < codeReference.classes.length; index++) {
         generateMarkdownFile(codeReference.classes[index])
         generatedMarkdownFiles++
+
+        indexFiles.push({
+          name: codeReference.classes[index].name,
+          path: codeReference.classes[index].path
+        })
       }
+
+      generateIndexFile(indexFiles)
 
       console.log(`
 GDScriptify
