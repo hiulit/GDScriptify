@@ -7,7 +7,7 @@ module.exports = files => {
 
   for (let index = 0; index < files.length; index++) {
     const file = files[index]
-    const filePath = file.path.replace('.gd', '.md')
+    const filePath = file.path.replace('.gd', '.md').replace(path.sep, '/')
     const fileName = file.name
 
     outputString += `- [${fileName}](./${filePath})\n`

@@ -156,7 +156,7 @@ module.exports = filePath => {
       file = {
         name: null,
         description: null,
-        path: `${filePath.replace(config.projectDir + '/', '')}`,
+        path: `${filePath.replace(config.projectDir + path.sep, '')}`,
         icon: null,
         tool: false,
         extends: null,
